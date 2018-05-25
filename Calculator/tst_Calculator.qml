@@ -13,7 +13,7 @@ Calculator {
         function test_button_1_clicked()
         {
             changeContent("1");
-            verify(calculator.text == "1");
+            verify(calculator.text === "1");
 
         }
 
@@ -21,7 +21,7 @@ Calculator {
         {
             setFirstNumAndCurrentOperator("+");
             console.log("calculator.text: " + calculator.text);
-            verify(calculator.text == "");
+            verify(calculator.text === "");
 
         }
 
@@ -31,7 +31,7 @@ Calculator {
             calculator.currentValue = 5;
             equal("+");
             console.log("calculator.text: " + calculator.text);
-            verify(calculator.text == "6");
+            verify(calculator.text === "6");
         }
 
         function test_equal_2multiply10_get20()
@@ -40,7 +40,7 @@ Calculator {
             calculator.currentValue =10;
             equal("*");
             console.log("calculator.text: " + calculator.text);
-            verify(calculator.text == "20");
+            verify(calculator.text === "20");
         }
 
     }

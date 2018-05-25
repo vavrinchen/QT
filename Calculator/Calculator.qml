@@ -48,7 +48,7 @@ Rectangle {
 
     function changeContent(val) {
         console.log("calculatorPane: " + val)
-        if (val == "=") {
+        if (val === "=") {
             text = ""
             console.log("equal op: " + currentOperator)
             equal(currentOperator)
