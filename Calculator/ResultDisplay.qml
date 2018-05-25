@@ -16,8 +16,8 @@ Rectangle {
         text: calculatorPane.text
         color: "#000000"
         font.pixelSize: 24
-        anchors.verticalCenter: parent.verticalCenter
-        anchors.right: parent.right
+        anchors.verticalCenter: resultDisplay.verticalCenter
+        anchors.right: resultDisplay.right
         anchors.margins: 10
     }
 }

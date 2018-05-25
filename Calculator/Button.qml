@@ -15,24 +15,24 @@ Item {
 
     Rectangle {
     id: itemRectangle;
-    anchors.fill: parent;
-    radius: parent.radius;
+    anchors.fill: button;
+    radius: button.radius;
 
     }
 
 
     Text {
     id: itemText;
-    text: parent.text;
+    text: button.text;
     color: text_color;
     font.pixelSize: font_pixel_size;
-    anchors.centerIn: parent;
+    anchors.centerIn: button;
     }
 
 
     MouseArea {
     id: itemMouseArea;
-    anchors.fill: parent;
+    anchors.fill: button;
     onClicked: button.clicked(text)
     }
 }

@@ -7,63 +7,48 @@ Rectangle {
     height: 350
     anchors.margins: 5
     property string text: ""
-    property int frontNum
+    property int firstNum
     property int secondNum
     property int currentValue
     property int total
     property string currentOperator: ""
     property alias resultDisplay: resultDisplay
+    property var operators : {
+        '+': function(firstNum, secondNum) { return firstNum + secondNum; },
+        '-': function(firstNum, secondNum) { return firstNum - secondNum; },
+        '*': function(firstNum, secondNum) { return firstNum * secondNum; },
+        '/': function(firstNum, secondNum) { return firstNum / secondNum; }
+    };
+
+    ResultDisplay {
+        id: resultDisplay
+    }
+
+    ButtonGrid {
+        id: buttonGrid
+    }
 
 
     function equal(currentOperator) {
         secondNum = currentValue
-        switch (currentOperator) {
-        case "+":
-            total = frontNum + secondNum
-            changeContent(total)
-            text = total.toString()
-            break
-        case "-":
-            total = frontNum - secondNum
-            changeContent(total)
-            text = total.toString()
-            break
-        case "*":
-            total = frontNum * secondNum
-            changeContent(total)
-            text = total.toString()
-            break
-        case "/":
-            total = frontNum / secondNum
-            changeContent(total)
-            text = total.toString()
-            break
-        default:
-            console.log("default: " + currentOperator)
-            break
-        }
+        total = operators[currentOperator](firstNum, secondNum);
+        changeContent(total)
+        text = total.toString()
+        console.log("default: " + currentOperator + " total: " + total)
+
+    }
+
+
+    function setFirstNumAndCurrentOperator(val) {
+        text = ""
+        firstNum = currentValue
+        currentOperator = val
     }
 
 
     function changeContent(val) {
         console.log("calculatorPane: " + val)
-        if (val == "+") {
-            text = ""
-            frontNum = currentValue
-            currentOperator = val
-        } else if (val == "-") {
-            text = ""
-            frontNum = currentValue
-            currentOperator = val
-        } else if (val == "*") {
-            text = ""
-            frontNum = currentValue
-            currentOperator = val
-        } else if (val == "/") {
-            text = ""
-            frontNum = currentValue
-            currentOperator = val
-        } else if (val == "=") {
+        if (val == "=") {
             text = ""
             console.log("equal op: " + currentOperator)
             equal(currentOperator)
@@ -75,15 +60,9 @@ Rectangle {
     }
 
     function clear(){
-        text = "0"
+        text = ""
     }
 
-    ResultDisplay {
-        id: resultDisplay
-    }
 
-    ButtonGrid {
-        id: buttonGrid
-    }
 
 }

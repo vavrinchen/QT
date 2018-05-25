@@ -6,6 +6,10 @@ Calculator {
         name: "1Add5_Get6_Test"
         when: windowShown
 
+        function init(){
+            clear();
+        }
+
         function test_button_1_clicked()
         {
             changeContent("1");
@@ -15,7 +19,7 @@ Calculator {
 
         function test_button_add_clicked()
         {
-            changeContent("+");
+            setFirstNumAndCurrentOperator("+");
             console.log("calculator.text: " + calculator.text);
             verify(calculator.text == "");
 
@@ -23,7 +27,7 @@ Calculator {
 
         function test_equal_1add5_get6()
         {
-            calculator.frontNum = 1;
+            calculator.firstNum = 1;
             calculator.currentValue = 5;
             equal("+");
             console.log("calculator.text: " + calculator.text);
@@ -32,7 +36,7 @@ Calculator {
 
         function test_equal_2multiply10_get20()
         {
-            calculator.frontNum = 2;
+            calculator.firstNum = 2;
             calculator.currentValue =10;
             equal("*");
             console.log("calculator.text: " + calculator.text);

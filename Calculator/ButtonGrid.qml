@@ -32,7 +32,7 @@ Grid {
     Button {
         id: buttonAdd
         text: "+"
-        onClicked: calculatorPane.changeContent(text)
+        onClicked: calculatorPane.setFirstNumAndCurrentOperator(text)
     }
     
     /* Row 1 */
@@ -54,7 +54,7 @@ Grid {
     Button {
         id: buttonSubtract
         text: "-"
-        onClicked: calculatorPane.changeContent(text)
+        onClicked: calculatorPane.setFirstNumAndCurrentOperator(text)
     }
     
     /* Row 2 */
@@ -76,7 +76,7 @@ Grid {
     Button {
         id: buttonMultiply
         text: "*"
-        onClicked: calculatorPane.changeContent(text)
+        onClicked: calculatorPane.setFirstNumAndCurrentOperator(text)
     }
     
     /* Row 3 */
@@ -98,6 +98,6 @@ Grid {
     Button {
         id: buttonDivision
         text: "/"
-        onClicked: calculatorPane.changeContent(text)
+        onClicked: calculatorPane.setFirstNumAndCurrentOperator(text)
     }
 }
