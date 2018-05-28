@@ -1,7 +1,7 @@
 import QtQuick  2.6
 
 Rectangle {
-    
+
     id: resultDisplay
     color: "#ffffff"
     anchors.top: calculatorPane.top
@@ -10,7 +10,7 @@ Rectangle {
     anchors.margins: calculatorPane.anchors.margins
     height: 42
     radius: height / 10
-    
+
     Text {
         id: resultDisplayText
         text: calculatorPane.text

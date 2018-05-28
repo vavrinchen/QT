@@ -19,7 +19,7 @@ Calculator {
 
         function test_button_add_clicked()
         {
-            setFirstNumAndCurrentOperator("+");
+            buttonGrid.setFirstNumAndCurrentOperator("+");
             console.log("calculator.text: " + calculator.text);
             verify(calculator.text === "");
 
@@ -27,8 +27,8 @@ Calculator {
 
         function test_equal_1add5_get6()
         {
-            calculator.firstNum = 1;
-            calculator.currentValue = 5;
+            buttonGrid.firstNum = 1;
+            buttonGrid.currentValue = 5;
             equal("+");
             console.log("calculator.text: " + calculator.text);
             verify(calculator.text === "6");
@@ -36,8 +36,8 @@ Calculator {
 
         function test_equal_2multiply10_get20()
         {
-            calculator.firstNum = 2;
-            calculator.currentValue =10;
+            buttonGrid.firstNum = 2;
+            buttonGrid.currentValue =10;
             equal("*");
             console.log("calculator.text: " + calculator.text);
             verify(calculator.text === "20");

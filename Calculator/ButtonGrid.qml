@@ -6,6 +6,16 @@ Grid {
     property int button_width: (width - 2 * anchors.margins) / columns
     property int button_height: button_width
     property color text_color: "#000000"
+    property int firstNum
+    property int secondNum
+    property int currentValue
+    property var operators : {
+        '+': function(firstNum, secondNum) { return firstNum + secondNum; },
+        '-': function(firstNum, secondNum) { return firstNum - secondNum; },
+        '*': function(firstNum, secondNum) { return firstNum * secondNum; },
+        '/': function(firstNum, secondNum) { return firstNum / secondNum; }
+    };
+
     spacing: calculatorPane.anchors.margins
     anchors.top: resultDisplay.bottom
     anchors.left: calculatorPane.left
@@ -32,7 +42,7 @@ Grid {
     Button {
         id: buttonAdd
         text: "+"
-        onClicked: calculatorPane.setFirstNumAndCurrentOperator(text)
+        onClicked: setFirstNumAndCurrentOperator(text)
     }
     
     /* Row 1 */
@@ -54,7 +64,7 @@ Grid {
     Button {
         id: buttonSubtract
         text: "-"
-        onClicked: calculatorPane.setFirstNumAndCurrentOperator(text)
+        onClicked: setFirstNumAndCurrentOperator(text)
     }
     
     /* Row 2 */
@@ -76,7 +86,7 @@ Grid {
     Button {
         id: buttonMultiply
         text: "*"
-        onClicked: calculatorPane.setFirstNumAndCurrentOperator(text)
+        onClicked: setFirstNumAndCurrentOperator(text)
     }
     
     /* Row 3 */
@@ -98,6 +108,12 @@ Grid {
     Button {
         id: buttonDivision
         text: "/"
-        onClicked: calculatorPane.setFirstNumAndCurrentOperator(text)
+        onClicked: setFirstNumAndCurrentOperator(text)
+    }
+
+    function setFirstNumAndCurrentOperator(val) {
+        calculatorPane.text = ""
+        firstNum = currentValue
+        currentOperator = val
     }
 }

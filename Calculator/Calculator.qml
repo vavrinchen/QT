@@ -7,18 +7,9 @@ Rectangle {
     height: 350
     anchors.margins: 5
     property string text: ""
-    property int firstNum
-    property int secondNum
-    property int currentValue
     property int total
     property string currentOperator: ""
-    property alias resultDisplay: resultDisplay
-    property var operators : {
-        '+': function(firstNum, secondNum) { return firstNum + secondNum; },
-        '-': function(firstNum, secondNum) { return firstNum - secondNum; },
-        '*': function(firstNum, secondNum) { return firstNum * secondNum; },
-        '/': function(firstNum, secondNum) { return firstNum / secondNum; }
-    };
+    property alias buttonGrid: buttonGrid
 
     ResultDisplay {
         id: resultDisplay
@@ -30,19 +21,12 @@ Rectangle {
 
 
     function equal(currentOperator) {
-        secondNum = currentValue
-        total = operators[currentOperator](firstNum, secondNum);
+        buttonGrid.secondNum = buttonGrid.currentValue
+        total = buttonGrid.operators[currentOperator](buttonGrid.firstNum, buttonGrid.secondNum);
         changeContent(total)
         text = total.toString()
         console.log("default: " + currentOperator + " total: " + total)
 
-    }
-
-
-    function setFirstNumAndCurrentOperator(val) {
-        text = ""
-        firstNum = currentValue
-        currentOperator = val
     }
 
 
@@ -55,7 +39,7 @@ Rectangle {
         } else {
             text += val
             text.toString()
-            currentValue = parseInt(text)
+            buttonGrid.currentValue = parseInt(text)
         }
     }
 
